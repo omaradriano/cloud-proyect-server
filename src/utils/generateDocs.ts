@@ -1,3 +1,9 @@
+/**
+ * Este archivo permite realizar la generacion de un archivo docx en base a un plantilla pregenerada.
+ * La plantilla se encuentra en ~/src/templates/prebuilded
+ * 
+ */
+
 // PizZip is required because docx/pptx/xlsx files are all zipped files, and
 // the PizZip library allows us to load the file in memory
 import PizZip from 'pizzip'
@@ -27,7 +33,7 @@ export default async function createDocx(template: string, info: Carta_Compromis
     });
     
     //Cargar la informacion recibida dentro del documento
-    console.log(info);
+    // console.log(info);
     doc.render(info);
     
     //Construir el documento y generar un buffer
