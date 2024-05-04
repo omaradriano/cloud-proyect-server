@@ -8,9 +8,10 @@ const app = express()
 //Routes
 import files from './src/routes/files.routes'
 import root from './src/routes/main.routes'
+import auth from './src/routes/auth.routes'
 
 type WhiteList = Array<string>
-const whiteList: WhiteList = ["http://127.0.0.1:3000", "http://localhost:3000"]
+const whiteList: WhiteList = ["http://127.0.0.1:3000", "http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:5173"]
 
 app.use(bodyParser.json({ limit: '500kb' }))
 
@@ -27,6 +28,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use('/', root) //Rutas de root
 app.use('/files', files) //Rutas donde se armar los archivos
+app.use('/auth', auth)
 
 app.listen(PORT, () => {
     console.log(`Running in port ${PORT}`);
