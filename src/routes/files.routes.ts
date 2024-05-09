@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const files = Router()
 
-files.get('/download/:file/:type', async (req: Request, res: Response) => {
+files.post('/download/:file/:type', async (req: Request, res: Response) => {
 
     const info = req.body //La entrada de informacion va a ser valorada por el lado del usuario, de este lado se da por hecho que se envía la información correcta.
     let { file, type } = req.params

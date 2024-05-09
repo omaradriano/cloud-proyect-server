@@ -1,4 +1,5 @@
 import { Request, Response, Router } from 'express'
+// const { MongoClient } = require("mongodb");
 import {MongoClient} from 'mongodb'
 // Replace the uri string with your connection string.
 const uri = "mongodb+srv://omaradriano:RFtEEFepvBnkAKg2@cluster-1.xsgzofl.mongodb.net/";
