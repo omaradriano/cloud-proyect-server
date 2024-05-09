@@ -9,6 +9,7 @@ const app = express()
 import files from './src/routes/files.routes'
 import root from './src/routes/main.routes'
 import auth from './src/routes/auth.routes'
+import data from './src/routes/data.routes'
 
 type WhiteList = Array<string>
 const whiteList: WhiteList = ["http://127.0.0.1:3000", "http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:5173"]
@@ -28,7 +29,12 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use('/', root) //Rutas de root
 app.use('/files', files) //Rutas donde se armar los archivos
+
+//Maneja autenticacion
 app.use('/auth', auth)
+
+//Rutas en las que se mueve informacion para cargar los datos en los campos de llenado de archivos
+app.use('/data', data)
 
 app.listen(PORT, () => {
     console.log(`Running in port ${PORT}`);
