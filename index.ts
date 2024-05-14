@@ -18,13 +18,22 @@ const whiteList: WhiteList = ["http://127.0.0.1:3000", "http://localhost:3000", 
 
 app.use(bodyParser.json({ limit: '500kb' }))
 
+const allowedOrigins = ["http://127.0.0.1:3000", "http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:5173", "https://bisondocx.tech"];
+
 const corsOptions = {
-    origin: 'http://localhost:5173', // Origen permitido
+    origin: function (origin: any, callback: any) {
+        // Verificar si el origen está en la lista de orígenes permitidos
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true); // Permitir el acceso desde el origen
+        } else {
+            callback(new Error('Not allowed by CORS')); // No permitir el acceso desde el origen
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
     allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
 };
 
-app.options('*', cors(corsOptions));
+app.use(cors(corsOptions)); // Habilitar CORS con las opciones especificadasc
 
 // Uso de los headers para permitir peticiones de los sitios especificados (Esto es un middleware)
 app.use((req: Request, res: Response, next: NextFunction) => {
