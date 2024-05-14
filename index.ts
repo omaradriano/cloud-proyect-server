@@ -5,7 +5,7 @@ import cors from 'cors'
 import { PORT } from './src/config'
 
 const app = express()
-app.use(cors())
+app.use(cors({origin:true,credentials: true}))
 
 //Routes
 import files from './src/routes/files.routes'
