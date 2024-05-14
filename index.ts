@@ -14,7 +14,7 @@ import auth from './src/routes/auth.routes'
 import data from './src/routes/data.routes'
 
 type WhiteList = Array<string>
-const whiteList: WhiteList = ["http://127.0.0.1:3000", "http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:5173"]
+const whiteList: WhiteList = ["http://127.0.0.1:3000", "http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:5173", "https://bisondocx.tech"]
 
 app.use(bodyParser.json({ limit: '500kb' }))
 
@@ -37,6 +37,10 @@ app.use('/auth', auth)
 
 //Rutas en las que se mueve informacion para cargar los datos en los campos de llenado de archivos
 app.use('/data', data)
+
+app.get('/', (req: Request, res: Response)=>{
+    res.send('From root')
+})
 
 app.listen(PORT, () => {
     console.log(`Running in port ${PORT}`);
