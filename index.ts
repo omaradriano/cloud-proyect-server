@@ -1,9 +1,11 @@
 import express, { NextFunction, Request, Response } from 'express'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 
 import { PORT } from './src/config'
 
 const app = express()
+app.use(cors())
 
 //Routes
 import files from './src/routes/files.routes'
