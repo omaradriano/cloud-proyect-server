@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response, Router } from 'express'
 import { MongoClient } from 'mongodb'
-import cors from 'cors'
 // import { verifyauth } from '../middlewares/verifyauth';  
 const uri = "mongodb+srv://omaradriano:RFtEEFepvBnkAKg2@cluster-1.xsgzofl.mongodb.net/";
 
