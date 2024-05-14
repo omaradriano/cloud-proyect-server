@@ -5,7 +5,7 @@ import cors from 'cors'
 import { PORT } from './src/config'
 
 const app = express()
-app.use(cors({origin:true,credentials: true}))
+app.use(cors({ origin: true, credentials: true }))
 
 //Routes
 import files from './src/routes/files.routes'
@@ -18,6 +18,14 @@ const whiteList: WhiteList = ["http://127.0.0.1:3000", "http://localhost:3000", 
 
 app.use(bodyParser.json({ limit: '500kb' }))
 
+const corsOptions = {
+    origin: 'http://localhost:5173', // Origen permitido
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
+};
+
+app.options('*', cors(corsOptions));
+
 // Uso de los headers para permitir peticiones de los sitios especificados (Esto es un middleware)
 app.use((req: Request, res: Response, next: NextFunction) => {
     const origin: string | undefined = req.headers.origin;
@@ -29,6 +37,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     next();
 });
 
+
 app.use('/', root) //Rutas de root
 app.use('/files', files) //Rutas donde se armar los archivos
 
@@ -38,7 +47,7 @@ app.use('/auth', auth)
 //Rutas en las que se mueve informacion para cargar los datos en los campos de llenado de archivos
 app.use('/data', data)
 
-app.get('/', (req: Request, res: Response)=>{
+app.get('/', (req: Request, res: Response) => {
     res.send('From root')
 })
 
