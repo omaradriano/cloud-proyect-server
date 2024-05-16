@@ -13,7 +13,7 @@ import { Carta_Compromiso } from '../types/types'
 
 import path from 'path'
 import fs from 'fs'
-import templates_source from '../templates_path';
+import templates_source from '../config';
 
 export default async function createDocx(template: string, info: Carta_Compromiso) {
     // console.log(path.resolve(__dirname);

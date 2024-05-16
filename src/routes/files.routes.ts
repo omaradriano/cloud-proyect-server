@@ -3,7 +3,7 @@ import createDocx from '../utils/generateDocs'
 import fs from 'fs'
 import path from 'path'
 import axios from 'axios'
-import templates_source from '../templates_path'
+import templates_source from '../config'
 
 const files = Router()
 
