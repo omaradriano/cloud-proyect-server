@@ -6,26 +6,25 @@ import { PORT } from './src/config'
 
 const app = express()
 
-app.use(cors({
-    origin: [
-        "http://127.0.0.1:3000",
-        "http://localhost:3000",
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "https://bisondocx.tech"],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
-}));
+// app.use(cors({
+//     origin: [
+//         "http://127.0.0.1:3000",
+//         "http://localhost:3000",
+//         "http://localhost:5173",
+//         "http://127.0.0.1:5173",
+//         "https://bisondocx.tech"],
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true
+// }));
+
+app.use(cors())
 
 //Routes
 import files from './src/routes/files.routes'
 import root from './src/routes/main.routes'
 import auth from './src/routes/auth.routes'
 import data from './src/routes/data.routes'
-
-type WhiteList = Array<string>
-const whiteList: WhiteList = ["http://127.0.0.1:3000", "http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:5173", "https://bisondocx.tech"]
 
 app.use(bodyParser.json({ limit: '500kb' }))
 
