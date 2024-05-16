@@ -9,7 +9,7 @@ import path from 'path'
 let templates_source: string
 
 if (process.env.SOURCE_FILES === 'prod') {
-    templates_source = path.join(__dirname,'..','..','src', 'templates');
+    templates_source = path.join(__dirname,'..','..', 'templates');
 } else {
     templates_source = path.join(__dirname,'..', 'templates');
     // Ruta diferente para el entorno de desarrollo
