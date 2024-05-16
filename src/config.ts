@@ -8,7 +8,7 @@ import path from 'path'
 
 let templates_source: string
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.SOURCE_FILES === 'prod') {
     templates_source = path.join(__dirname,'..','..', 'src', 'templates');
 } else {
     templates_source = path.join(__dirname,'..', 'src', 'templates');
