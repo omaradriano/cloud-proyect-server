@@ -16,5 +16,6 @@ if (process.env.SOURCE_FILES === 'prod') {
 }
 
 console.log(templates_source);
+console.log(__dirname);
 
 export default templates_source
