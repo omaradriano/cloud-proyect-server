@@ -1,0 +1,1 @@
+const aux = 'Una variable auxiliar solo para que cargue el archivo xd'
