@@ -44,7 +44,11 @@ data.post('/updateUserFile/:filename', async (req: Request, res: Response) => {
         const database = client.db('bisondocx');
         const users = database.collection('users');
 
-        await users.updateOne({ email: email }, { $set: { files: { [filename]: { ...allData } } } })
+        // Construye el objeto que deseas agregar
+        const newData = { [filename]: allData };
+
+        // Usa $set para agregar newData a files sin sobrescribir el resto de los campos de files
+        await users.updateOne({ email: email }, { $set: { [`files.${filename}`]: allData } });
 
         res.status(200).json({ message: 'Información actualizada' })
 

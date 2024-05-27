@@ -1,1 +1,1 @@
-const aux = 'Una variable auxiliar solo para que cargue el archivo xd'
+console.log('Este archivo solo sirve para mantener esta carpeta activa');
